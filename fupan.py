@@ -13,6 +13,15 @@ hot_new_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=%
 hot_later_url = "https://www.fupanyoudao.com/v1/api/report?page_num=50&page_size=10&type=2"
 hot_new_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=50&page_size=10&type=3"
 
+# 个股研报
+stock_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=%d&type=4"
+
+# 策略
+strategy_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=%d&type=5"
+
+# 行业
+industry_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=%d&type=6"
+
 # detail_base_url + source ID
 detail_base_url = "https://www.fupanyoudao.com/v1/api/report/report_detail?source_id=%s"
 
@@ -60,10 +69,43 @@ def GetPageContent():
 
     # insert_data("fpyd_stock", aa.toArray())
 
+def GetStockResearch():
+    # https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=10&type=4
+    page_url = stock_reseach_url % (1, 599)
+    print(page_url)
+    ret = GetDataFromUrl(page_url)  
+
+    json_root = json.loads(ret.content)
+    for json_data in json_root["data"]:
+        # print(json_data["id"] + "  " + json_data["title"] + "  " + json_data["source_id"])
+        data = fpdata(json_data)
+        insert_data("fpyd_stock", data.toArray())
+
+def GetStrategyResearch():
+    page_url = strategy_reseach_url % (1, 621)
+    print(page_url)
+    ret = GetDataFromUrl(page_url)  
+
+    json_root = json.loads(ret.content)
+    for json_data in json_root["data"]:
+        # print(json_data["id"] + "  " + json_data["title"] + "  " + json_data["source_id"])
+        data = fpdata(json_data)
+        insert_data("fpyd_strategy", data.toArray())
+
+def GetIndustryResearch():
+    page_url = industry_reseach_url % (1, 1449)
+    print(page_url)
+    ret = GetDataFromUrl(page_url)  
+
+    json_root = json.loads(ret.content)
+    for json_data in json_root["data"]:
+        # print(json_data["id"] + "  " + json_data["title"] + "  " + json_data["source_id"])
+        data = fpdata(json_data)
+        insert_data("fpyd_industry", data.toArray())
 
 if __name__ == '__main__':
     # 获取页数
     # total = GetResNum()
 
-    GetPageContent()
+    GetIndustryResearch()
 
