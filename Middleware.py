@@ -7,7 +7,11 @@ def insert_datas(datas):
 
 def insert_data(database, data):
     with UsingMysql(log_time=True) as um:
-        pass
+        sql = "insert into " + database + "(fp_id, fp_title, fp_res_org, fp_report_time, fp_stock_name, fp_stock_code, fp_source_id, fp_is_stock)  \
+        values(%s, %s, %s, %s, %s, %s, %s, %s)" 
+        params = ('%s' % data[0], '%s' % data[1], "%s" % data[2], "%s" % data[3], "%s" % data[4], "%s" % data[5], "%s" % data[6], "%d" % data[7])
+        # print(sql)
+        um.cursor.execute(sql, params)
 
 def test_insert_data():
     pass

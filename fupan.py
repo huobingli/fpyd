@@ -2,6 +2,7 @@ import requests
 import json
 
 from fpdata import *
+from Middleware import *
 # 热门研报
 # type 1 最新
 # type 2 近一周
@@ -53,8 +54,11 @@ def GetPageContent():
     for json_data in json_root["data"]:
         # print(json_data["id"] + "  " + json_data["title"] + "  " + json_data["source_id"])
         data = fpdata(json_data)
-        fplist.append(data)
-    pass
+        insert_data("fpyd_hot", data.toArray())
+        # fplist.append(data)
+    
+
+    # insert_data("fpyd_stock", aa.toArray())
 
 
 if __name__ == '__main__':
