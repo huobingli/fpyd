@@ -9,23 +9,44 @@ from Middleware import *
 # type 3 新财富分析师
 
 page_num = 50
-hot_new_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=%d&type=1"
-hot_later_url = "https://www.fupanyoudao.com/v1/api/report?page_num=50&page_size=10&type=2"
-hot_new_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=50&page_size=10&type=3"
 
+
+# 第一个tab页面 热门研报
+# 近24小时
+hot_new_url = "https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=%d&type=1"
+# 近一周
+hot_later_url = "https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=10&type=2"
+# 新财富分析师
+hot_new_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=10&type=3"
+
+# 第二个页面 看涨预期
+more_money_url = "https://www.fupanyoudao.com/v1/api/report/stock_expect?page_num=1&page_size=%d"
+
+# 第三个tab页面 最新
+# 最新数据
+new_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=%d&type=0"
+
+# 第四个tab页面 全部
 # 个股研报
-stock_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=%d&type=4"
-
-# 策略
-strategy_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=%d&type=5"
+stock_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=%d&type=4"
 
 # 行业
-industry_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=%d&type=6"
+industry_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=%d&type=6"
+
+# 策略
+strategy_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=%d&type=5"
+
+# 宏观
+macro_reseach_url = "https://www.fupanyoudao.com/v1/api/report?page_num=1&page_size=%d&type=7"
 
 # detail_base_url + source ID
 detail_base_url = "https://www.fupanyoudao.com/v1/api/report/report_detail?source_id=%s"
 
+
+
 # page_url = "https://www.fupanyoudao.com/v1/api/report?page_num=%d&page_size=10&type=1"
+
+
 
 def GetDataFromUrl(_url):
     headers = { 

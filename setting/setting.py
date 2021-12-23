@@ -1,5 +1,5 @@
-mysql_host="localhost"
-mysql_port="3306"
-
-redis_host="localhost"
-redis_port="6379"
+host = '47.114.171.118'
+port = 32333
+db = 'fpyd'
+user = 'root'
+password = '111111'
